@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 
 
 interface BotaoProps{
-    children: ReactElement
+    children: ReactElement | string
 }
 
 

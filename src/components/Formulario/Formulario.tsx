@@ -3,10 +3,16 @@ import Botao from '../Botao/Botao';
 import CampoTexto from '../CampoTexto/CampoTexto';
 import ListaSuspensa from '../ListaSuspensa/ListaSuspensa';
 import './Formulario.css';
+import { IColaborador } from '../../shared/interfaces/IColaborador';
+
+interface FormularioProps{
+    aoColaboradorCadastrado: (colaborador: IColaborador) => void,
+    times: string[],
+
+}
 
 
-const Formulario = (props) => {
-
+const Formulario = (props: FormularioProps) => {
 
     const [nome, setNome] = useState('');
     const [cargo, setCargo] = useState('');
@@ -14,7 +20,7 @@ const Formulario = (props) => {
     const [time, setTime] = useState('');
 
 
-    const aoSalvar = (e) => {
+    const aoSalvar = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         props.aoColaboradorCadastrado({
             nome,
@@ -54,6 +60,7 @@ const Formulario = (props) => {
                 />
 
                 <CampoTexto
+                
                     label="Imagem"
                     placeholder="Digite o endereço de sua imagem"
                     valor={imagem}
