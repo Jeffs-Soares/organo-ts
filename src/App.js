@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div className="App">
-      <Banner />
+      <Banner enderecoImagem='/imgs/banner.png' textoAlternativo='Banner Home'/>
       <Formulario times={ times.map(time => time.nome) } aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)} />
 
       {times.map( time => <Time
