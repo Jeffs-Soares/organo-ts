@@ -4,13 +4,11 @@ import CampoTexto from '../CampoTexto/CampoTexto';
 import ListaSuspensa from '../ListaSuspensa/ListaSuspensa';
 import './Formulario.css';
 import { IColaborador } from '../../shared/interfaces/IColaborador';
-
 interface FormularioProps{
     aoColaboradorCadastrado: (colaborador: IColaborador) => void,
     times: string[],
 
 }
-
 
 const Formulario = (props: FormularioProps) => {
 
@@ -18,6 +16,7 @@ const Formulario = (props: FormularioProps) => {
     const [cargo, setCargo] = useState('');
     const [imagem, setImagem] = useState('');
     const [time, setTime] = useState('');
+    const [data, setData] = useState('');
 
 
     const aoSalvar = (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,12 +25,14 @@ const Formulario = (props: FormularioProps) => {
             nome,
             cargo,
             imagem,
-            time
+            time,
+            data
         })
         
         setNome('');
         setCargo('');
         setImagem('');
+        setData('');
         setTime('Selecione o seu time');
 
     }
@@ -65,6 +66,14 @@ const Formulario = (props: FormularioProps) => {
                     placeholder="Digite o endereço de sua imagem"
                     valor={imagem}
                     aoAlterado={valor => setImagem(valor)}
+                />
+                
+                <CampoTexto
+                    label="Data"
+                    placeholder=""
+                    valor={data}
+                    aoAlterado={valor => setData(valor)}
+                    tipo="date"
                 />
 
                 <ListaSuspensa

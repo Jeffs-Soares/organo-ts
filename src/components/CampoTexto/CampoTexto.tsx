@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './CampoTexto.css';
 
 interface CampoTextoProps{
@@ -6,10 +5,11 @@ interface CampoTextoProps{
     placeholder: string,
     label: string,
     valor: string,
-    obrigatorio?: boolean
+    obrigatorio?: boolean,
+    tipo?: 'text' | 'password' | 'date' | 'email' | 'number'
 }
 
-const CampoTexto = ({aoAlterado, placeholder, label, valor, obrigatorio = false}: CampoTextoProps) => {
+const CampoTexto = ({aoAlterado, placeholder, label, valor, obrigatorio = false, tipo='text'}: CampoTextoProps) => {
    
     const aoDigitado = (e: React.ChangeEvent<HTMLInputElement>) => {
         aoAlterado(e.target.value);
@@ -25,6 +25,7 @@ const CampoTexto = ({aoAlterado, placeholder, label, valor, obrigatorio = false}
             onChange={aoDigitado}
             required={obrigatorio}
             placeholder={placeholder}
+            type={tipo}
             />
         </div>
     )
